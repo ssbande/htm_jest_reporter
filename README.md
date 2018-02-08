@@ -2,7 +2,7 @@
 An npm package that gives you an immediate access to your test cases and their status in a very user friendly way. <br/>
 > **NOTE:** This package has configuration settings which are mentioned later in the 'Configuration' section. If the settings are not mentioned explicitly in your application, then the default values mentioned in the 'Configuration'section will be used. 
 
-
+<br/> The final report generated will look similiar to this: <br />
 ![Image of report](rep.jpg) 
 <hr/><br/>
 
