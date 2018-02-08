@@ -2,6 +2,9 @@
 An npm package that gives you an immediate access to your test cases and their status in a very user friendly way. <br/>
 > **NOTE:** This package has configuration settings which are mentioned later in the 'Configuration' section. If the settings are not mentioned explicitly in your application, then the default values mentioned in the 'Configuration'section will be used. 
 
+The final generated report may look something similar to: <hr />
+
+
 ## Installation
 ```shell
 npm install htm_jest_reporter --save-dev
