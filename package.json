@@ -1,0 +1,16 @@
+{
+  "name": "htm_jest_reporter",
+  "version": "1.1.0",
+  "description": "html reporter for jest test cases ",
+  "main": "./src/index",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shreyas Bande",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-to-html": "^0.6.4",
+    "mkdirp": "^0.5.1",
+    "xmlbuilder": "^9.0.4"
+  }
+}
