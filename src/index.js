@@ -1,21 +1,26 @@
-var rGen = require('./generator');
-var util = require('./util');
+import React from 'react';
+import { render } from 'react-dom';
+import { renderToStaticMarkup as renders } from 'react-dom/server';
+import App from './app';
+import { readConfig } from './utils';
+import fs from 'fs';
+
+if(process.env.NODE_ENV === 'development') {
+  console.log("starting the jest reporter ... ");
+  var config = readConfig();
+  console.log("dest: ", config);
+
+  render(<App />, document.querySelector('#root'))
+}
 
 module.exports = (testResult) => {
-	/*
-	1. Check for the config to be set in package.json under "jesthtml".
-	2. Available Config Parameters
-		> "title": Title for the test result page. Default "Test Report"
-		> "heading": Heading to be shown on the html page for report. Default "Test Report"
-		> "footerMsg": Any message to be shown on the footer of the generated html report. Default null
-		> "destination": Outout file path for the report to be generated. Default "sbJestHtmlReport.html".
-	*/
-	var config = util.readConfig();
-	console.log("dest: ", config.destination);
-	
-	// Generate Report
-	rGen.generateReport(testResult, config);
+  console.log("starting the jest reporter ... ");
+  var config = readConfig();
+  console.log("dest: ", config.destination);
 
-	// Return the results as required by Jest
-	return testResult;
+  // fs.writeFile('./testResult.json', JSON.stringify(testResult));
+
+  const x = renders(<App />)
+  console.log('the html in string: ', x);
+  return testResult;
 };

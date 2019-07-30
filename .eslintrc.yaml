@@ -1,0 +1,232 @@
+plugins:
+  - import
+  - react
+
+env:
+  browser: true
+  es6: true
+  jest: true
+  node: true
+
+parser: "babel-eslint"
+
+parserOptions:
+  sourceType: module
+  ecmaVersion: 2017
+  ecmaFeatures:
+    jsx: true
+
+settings:
+  react:
+    version: "15.4"
+
+rules:
+
+  # Quality Rules - JS
+
+  array-callback-return: error
+  camelcase: off
+  class-methods-use-this: 
+    - error
+    - exceptMethods:
+      - render
+      - getInitialState
+      - getDefaultProps
+      - getChildContext
+      - componentWillMount
+      - componentDidMount
+      - componentWillReceiveProps
+      - shouldComponentUpdate
+      - componentWillUpdate
+      - componentDidUpdate
+      - componentWillUnmount
+  constructor-super: error
+  complexity:
+    - error
+    - max: 8
+  dot-notation:
+    - error
+    - allowPattern: "^[a-z]+(_[a-z]+)+$"
+  eqeqeq: error
+  max-depth:
+    - error
+    - max: 4
+  max-lines:
+    - error
+    - max: 150
+  max-nested-callbacks:
+    - error
+    - max: 4
+  max-params:
+    - error
+    - max: 6
+  max-statements:
+    - error
+    - max: 15
+  max-statements-per-line:
+    - error
+    - max: 3
+  no-alert: error
+  no-case-declarations: error
+  no-class-assign: error
+  no-compare-neg-zero: error
+  no-cond-assign: error
+  no-console: error
+  no-constant-condition: error
+  no-const-assign: error
+  no-control-regex: error
+  no-debugger: error
+  no-delete-var: error
+  no-dupe-args: error
+  no-dupe-class-members: error
+  no-dupe-keys: error
+  no-duplicate-case: error
+  no-else-return: error
+  no-empty: error
+  no-empty-character-class: error
+  no-empty-pattern: error
+  no-ex-assign: error
+  no-extra-boolean-cast: error
+  no-eval: error
+  no-fallthrough: error
+  no-func-assign: error
+  no-global-assign: error
+  no-inner-declarations: error
+  no-invalid-regexp: error
+  no-irregular-whitespace: error
+  no-lonely-if: error
+  no-new-symbol: error
+  no-magic-numbers:
+    - error
+    - ignore: [-2, -1, 0, 1, 2]
+  no-obj-calls: error
+  no-octal: error
+  no-param-reassign: error
+  no-redeclare: error
+  no-regex-spaces: error
+  no-script-url: error
+  no-self-assign: error
+  no-self-compare: error
+  no-sparse-arrays: error
+  no-this-before-super: error
+  no-undef: error
+  no-unexpected-multiline: error
+  no-unreachable: error
+  no-unsafe-finally: error
+  no-unsafe-negation: error
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
+      allowTernary: true
+      allowTaggedTemplates: true
+  no-unused-labels: error
+  no-unused-vars:
+    - error
+    - args: all
+      argsIgnorePattern: "^_"
+      vars: all
+      varsIgnorePattern: "^_"
+  no-useless-call: error
+  no-useless-concat: error
+  no-useless-escape: error
+  no-useless-return: error
+  no-var: error
+  prefer-arrow-callback: error
+  prefer-const: error
+  prefer-destructuring: error
+  prefer-rest-params: error
+  prefer-spread: error
+  prefer-template: error
+  require-yield: error
+  use-isnan: error
+  valid-typeof: error
+  yoda: error
+
+  # Quality Rules - Import
+
+  import/default: error
+  import/export: error
+  import/named: error
+  import/namespace: error
+  import/no-duplicates: error
+  import/no-named-as-default: error
+  import/no-named-as-default-member: error
+  import/no-unresolved: error
+  import/prefer-default-export: off
+
+  # Quality Rules - React
+
+  react/display-name: error
+  react/jsx-key: error
+  react/jsx-no-comment-textnodes: error
+  react/jsx-no-duplicate-props: error
+  react/jsx-no-target-blank: error
+  react/jsx-no-undef: error
+  react/jsx-uses-react: error
+  react/jsx-uses-vars: error
+  react/no-children-prop: error
+  react/no-danger-with-children: error
+  react/no-deprecated: error
+  react/no-direct-mutation-state: error
+  react/no-find-dom-node: error
+  react/no-is-mounted: error
+  react/no-render-return-value: error
+  react/no-string-refs: error
+  react/no-unescaped-entities: error
+  react/no-unknown-property: error
+  react/prop-types: error
+  react/react-in-jsx-scope: error
+  react/require-render-return: error
+
+  # Quality Rules - This Rule is contained in Prettier, unfortunately this value isn't supported yet.
+
+  arrow-parens:
+    - error
+    - as-needed
+    - requireForBlockBody: true
+
+  # Stylistic Rules - These Rules will be replaced by Prettier soon
+
+  arrow-spacing: warn
+  comma-dangle:
+    - warn
+    - arrays: always-multiline
+      objects: always-multiline
+      imports: always-multiline
+      exports: always-multiline
+      functions: ignore
+  dot-location:
+    - warn
+    - property
+  indent:
+    - warn
+    - 4
+    - SwitchCase: 1
+  jsx-quotes:
+    - warn
+    - prefer-double
+  max-len:
+    - warn
+    - 120
+    - ignoreUrls: true
+  no-extra-semi: warn
+  no-mixed-spaces-and-tabs: warn
+  no-multiple-empty-lines:
+    - warn
+    - max: 1
+  quotes:
+    - warn
+    - double
+  rest-spread-spacing: warn
+  semi:
+    - warn
+    - always
+
+# Douglas Crockford:
+# When I first met JavaScript, it was surprised that it had the two kinds of quotes, 
+# and I tried to make sense of it, using single for internal text, and double for external.
+# But eventually I realized that distinction isn't worth the clutter and confusion that comes
+# from having two when only one is needed. I decided to go with double because that is what JSON uses,
+# and it avoids errors caused by the overloading of apostrophe. I have been bitten by that.
+# In general, I am looking for ways to make the language smaller and better.
+# Quotes fall in the same class as null & undefined. We really don't need both.
