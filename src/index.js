@@ -1,7 +1,8 @@
-var rGen = require('./generator');
+// var rGen = require('./generator');
 var util = require('./util');
+import App from "./app.jsx";
 
-module.exports = (testResult) => {
+module.exports = (testResult, jestConfig) => {
 	/*
 	1. Check for the config to be set in package.json under "jesthtml".
 	2. Available Config Parameters
@@ -13,8 +14,11 @@ module.exports = (testResult) => {
 	var config = util.readConfig();
 	console.log("dest: ", config.destination);
 	
+	console.log("jest config: ", jestConfig, ' node env: ', process.NODE_ENV);
+
+
 	// Generate Report
-	rGen.generateReport(testResult, config);
+	// rGen.generateReport(testResult, config);
 
 	// Return the results as required by Jest
 	return testResult;

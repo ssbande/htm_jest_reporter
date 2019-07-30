@@ -263,7 +263,7 @@ function generateReport(testReport, config) {
 	3. Throw errors if any.
 	*/
 	
-	console.log("config from inside: ", config);
+	// console.log("config from inside: ", config);
 	
 	// mainHtml = htmlMain(config, testReport);
 	
