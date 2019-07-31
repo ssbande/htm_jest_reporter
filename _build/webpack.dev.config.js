@@ -16,7 +16,7 @@ module.exports = {
     },
     devtool: "source-map",
     entry: {
-        app: [paths.resolveFromRoot("src/index.js")],
+        app: [paths.resolveFromRoot("src/local.js")],
         vendor: ['react', 'react-dom']
     },
     module: baseConfig.module,
