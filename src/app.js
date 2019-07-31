@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { Component } from 'react';
 import './styles/reset.css';
 import './styles/main.css';
@@ -57,6 +58,20 @@ class App extends Component {
         <small>&#128378; Happy testing ...</small>
       </footer>
     </div>
+=======
+import React, { Component, Fragment } from 'react';
+import './content/styles/reset.css';
+
+class App extends Component {
+  constructor(props) {
+    super();
+
+  }
+  
+  render() {
+    console.log('props: ', this.props);
+    return <div>Shreyas Bande</div>
+>>>>>>> 9c7fda47290a8d4bc26c48d48b8b67ab4a73c90a
   }
 }
 
