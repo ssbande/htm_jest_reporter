@@ -108,35 +108,11 @@ nav a:hover {
   color: #ededed;
 }
 
-.logo {
-  height: 75px;
-  float: left;
-}
-
-.logo:before, .logo:after {
-  position: absolute;
-  font-size: 7em;
-  font-weight: 300;
-  line-height: 0;
-  color: #fff;
-  top: 25px;
-}
-
-.logo:before {
-  content: '\00BB';
-  left: 20px;
-}
-
-.logo:after {
-  content: '\00AB';
-  left: 34px;
-}
-
-section {
+main {
   width: 100%;
   margin: 25px auto;
   padding: 20px;
-  max-width: 70%;
+  max-width: 85%;
   font-size: 1rem;
   line-height: 1.5em;
   box-sizing: border-box;
