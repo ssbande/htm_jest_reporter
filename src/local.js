@@ -9,6 +9,7 @@ const config = {
   'footerMsg': '',
   'heading': 'Test Report',
   'title': 'Consent Management Test Report',
+  'rootFolder': 'src'
 } 
 
 const {startTime} = testResult;

@@ -1,2 +1,2 @@
 export { readConfig } from './configUtil';
-export { formatTestSuite } from './dataUtil';
+export { formatTestSuite, formatTestSuiteLocation, getSuiteName } from './dataUtil';

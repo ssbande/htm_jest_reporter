@@ -1,46 +1,25 @@
-import React, { Component } from 'react';
-import { IoIosFolderOpen, IoIosFolder, IoIosPin } from "react-icons/io";
-import { FaFolderOpen, FaFolder } from "react-icons/fa";
+import React from 'react';
 import '../styles/main.css';
-import { formatTestSuite } from '../utils';
+import { useStateValue } from '../context/state';
+import _ from 'lodash';
+import SuiteHeading from '../components/suiteHeading';
+import SuiteTests from '../components/suiteTests';
 
-
-class TestResult extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    const { suites } = this.props
-    return (<div className='testResultContainer'>
-      {suites.map((s, index) => {
-        return <div className='testSuites'>
-          <div className='suiteHeading'>
-            <div>
-              <div style={{marginBottom: '8px'}}>
-                <div className='suiteName'>{`Suite - ${index}`}</div>
-                <div className='suiteLocation'>
-                  <FaFolderOpen size={12}/>
-                  <span>{s.testFilePath}</span>
-                </div>
-              </div>
-              <div className='suiteSummary'>{`Suite - ${index}`}</div>
-            </div>
-            <div>Graph</div>
-          </div>
-          <ul className='testsHolder'>
-            {s.testResults.length
-              ? s.testResults.map((testSuite, i) => {
-                const suite = formatTestSuite(testSuite, i);
-                return <li className='test'>{suite.name}</li>
-              })
-              : <li className='test noTest'>No tests written ... </li>
-            }
-          </ul>
-        </div>
-      })}
-    </div>)
-  }
+const TestResult = () => {
+  const [{ suites }] = useStateValue();
+  return (<main className='testResultContainer'>
+    {suites.map((s, index) => { // Can add an option for ordering the tests alphabetically
+      return <div key={`suite_${index}`} className='testSuites'>
+        <SuiteHeading suite={s} index={index} />
+        <ul className='testsHolder'>
+          {s.testResults.length
+            ? s.testResults.map((testSuite, i) => <SuiteTests suiteTests={testSuite} index={i} />)
+            : <li className='test noTest'>No tests written ... </li>
+          }
+        </ul>
+      </div>
+    })}
+  </main>)
 }
 
 export default TestResult
