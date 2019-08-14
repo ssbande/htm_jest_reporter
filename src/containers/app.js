@@ -4,6 +4,8 @@ import { reducer } from '../context/reducer';
 
 import TestResult from './testResult';
 import Header from './../components/header';
+import Footer from './../components/footer';
+
 import '../styles/reset.css';
 import '../styles/ham.css'
 import '../styles/1.css';
@@ -42,6 +44,7 @@ const App = (props) => {
       <Header /> {/* header showing summary */}
       <TestResult/> {/* main */}
       <div id='sideNavMenu'></div> {/* Side Menu */}
+      <Footer /> {/* footer */}
     </StateProvider>
   )
 }
