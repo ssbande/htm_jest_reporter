@@ -1,29 +1,57 @@
-import React, { useEffect, Fragment, useState } from 'react';
-import { MdTouchApp } from 'react-icons/md';
+import React, { useRef, useState, useEffect, Fragment } from 'react';
+import { useStateValue } from '../context/state';
+import { FaChessKnight, FaCopy, FaSuitcase } from 'react-icons/fa';
+import { MdDoneAll, MdClear, MdRedo, MdCamera, MdAlarmOn, MdTouchApp } from "react-icons/md";
+import CountUp from 'react-countup';
 
-const Header = () => {
+const Footer = () => {
+  const [{ config, summary }] = useStateValue();
+
+  const { numTotalTestSuites, numTotalTests, numPassedTests,
+    numFailedTests, numPendingTests, totalTimeInSecs,
+    totalSnapshots
+  } = summary;
+
+  const headlineRef = useRef(null);
+  const navHeight = 75;
+
+  const [headlineHeight, setHeadlineHeight] = useState(0);
+  const [scrollTop, setScrollTop] = useState(0);
+  const [showSettings, setShowSettings] = useState(false);
   const [showScrollTopButton, setShowScrollTopButton] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  }
   const showScrollToTopButton = () => {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) setShowScrollTopButton(true);
     else setShowScrollTopButton(false);
   }
-  const headlineRef = useRef(null);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    
-  }
-
+  const toggleMenu = () => setShowSettings(!showSettings);
   useEffect(() => {
     window.addEventListener('scroll', e => {
+      setScrollTop(window.scrollY);
       showScrollToTopButton();
       setHeadlineHeight(headlineRef.current.clientHeight - navHeight);
     });
     window.scrollTo(0, 0);
-  }, []);
+  }, [])
 
   return <Fragment>
+    <nav className={`${scrollTop > headlineHeight ? 'scrolled' : ''}`}>
+      <div className='heading'>
+        <FaChessKnight size='45px' color='white' />
+        {config.title}
+      </div>
+      <div onClick={toggleMenu}
+        className={`hamburger hamburger--spin ${showSettings ? 'is-active' : ''}`}>
+        <div className="hamburger-box">
+          <div className="hamburger-inner"></div>
+        </div>
+      </div>
+    </nav>
     <header>
       <div ref={headlineRef} className="headline" style={{ opacity: `${1 - scrollTop / headlineHeight}` }}>
         <div className="inner" >
@@ -68,11 +96,18 @@ const Header = () => {
           </div>
         </div>
       </div>
+      {showScrollTopButton && <button onClick={scrollToTop} className='toTopButton' id="myBtn" title="Go to top">
+        Top <MdTouchApp size={20} />
+      </button>}
+      <div id="mySidenav" className="sidenav" style={{ width: `${showSettings ? '100vw' : 0}` }}>
+        {/* <div className='sideMenuHeading'>Settings</div> */}
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+      </div>
     </header>
-    {showScrollTopButton && <button onClick={scrollToTop} className='toTopButton' id="myBtn" title="Go to top">
-      Top <MdTouchApp size={20} />
-    </button>}
   </Fragment>
 }
 
-export default Header
+export default Footer

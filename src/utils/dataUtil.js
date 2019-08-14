@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { IoIosCheckmarkCircleOutline, IoIosCheckmarkCircle, IoIosCloseCircleOutline, IoIosCloseCircle, IoMdRadioButtonOn } from "react-icons/io";
+import { IoIosCheckmarkCircleOutline, IoIosCloseCircleOutline, IoMdRadioButtonOn } from "react-icons/io";
 
 const getTestBorderColor = {
   'passed': 'limegreen',
@@ -20,7 +20,8 @@ export const formatTestSuite = (testSuite, index) => {
     name: testSuite.fullName,
     borderColor: getTestBorderColor[testSuite.status],
     LeftIcon: getIndicativeIcon[testSuite.status],
-    canExpand: testSuite.status === 'failed'
+    canExpand: testSuite.status === 'failed',
+    failureMessages: testSuite.failureMessages
   }
 }
 

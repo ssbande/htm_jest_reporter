@@ -34,9 +34,9 @@
   padding-left: 4px;
 }
 
-.testsHolder li {
+/* .testsHolder li {
   border-bottom: 1px solid whitesmoke;
-}
+} */
 
 .testsHolder li:last-child {
   border-bottom: none;
@@ -44,11 +44,75 @@
 
 .test {
   padding: 10px;
-  border-left: 4px solid white;
+  /* border-left: 4px solid white; */
   font-size: 0.8rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: 0.4s;
+  /* font-weight: 300; */
+  /* font-family: 'Ubuntu'; */
+}
+.sweep-to-right:after {
+  content: '\203A';
+  color: red;
+  font-weight: bold;
+  font-size: 24px;
+  float: right;
+  margin-left: 5px;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+  transition: transform 0.3s ease-in-out;
+}
+.sweep-to-right.active:after {
+  /* content: "\2212"; */
+  content: '\203A';
+  display: inline-block;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  transition: transform 0.3s ease-in-out;
+}
+.sweep-to-right {
+  position: relative;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: color 1000ms;
+  transition: color 1000ms;
+  cursor: pointer;
+  /* border-left: 4px solid white; */
+}
+.sweep-to-right:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: linear-gradient(to right, white , whitesmoke);
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition: 300ms ease-out;
+  transition: 300ms ease-out;
+}
+.sweep-to-right:hover:before {
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+}
+
+.panel {
+  max-height: 0;
+  transition: max-height 1s ease-out;
 }
 
 .testNameIndicator {
@@ -83,9 +147,8 @@
   font-family: Ubuntu;
   color: white;
   background: #50c6d8;
-  border: 1px solid whitesmoke;
   border-radius: 4px;
-  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.4);
   position: fixed;
   outline: none;
   cursor: pointer;
@@ -94,9 +157,31 @@
   z-index: 99;
 }
 
-.footer {
-  background: #dddee1;
-  padding: 5vh 0;
-  text-align: center;
-  position: relative;
+footer {
+  height: 100px;
+  display: flex !important;
+  justify-content: space-around;
+  align-items: center;
+  background: #F5F5F5;
+  border-top: 2px solid #50c6d8 !important;
+  color: #D0D0D0;
+  flex-direction: column;
+  font-size: 0.8rem !important;
 } 
+
+.errorSection {
+  padding: 10px 10px 4px 20px;
+  font-size: 0.8rem;
+  font-family: 'Ubuntu';
+  font-weight: 300;
+  border-left: 4px solid red;
+}
+
+.errorDescription {
+  border: 3px solid whitesmoke;
+  background: #333;
+  color: white;
+  padding: 10px;
+  font-weight: 400;
+  font-family: 'Ubuntu'
+}

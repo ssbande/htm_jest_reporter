@@ -92,13 +92,6 @@ const App = (props) => {
         <main>
             <TestResult suites={testResult.testResults}/>
         </main>
-        <div id="mySidenav" className="sidenav" style={{width: `${showSettings ? '300px' : 0 }`}}>
-            <div className='sideMenuHeading'>Settings</div>
-            <a href="#">About</a>
-            <a href="#">Services</a>
-            <a href="#">Clients</a>
-            <a href="#">Contact</a>
-        </div>
     </div>
 
 }

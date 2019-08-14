@@ -3,8 +3,9 @@ import { StateProvider } from '../context/state';
 import { reducer } from '../context/reducer';
 
 import TestResult from './testResult';
-import Header from './../components/header';
-import Footer from './../components/footer';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import Nav from '../components/nav';
 
 import '../styles/reset.css';
 import '../styles/ham.css'
@@ -19,7 +20,8 @@ const App = (props) => {
     numPendingTestSuites,
     numPendingTests,
     numTotalTestSuites,
-    numTotalTests
+    numTotalTests,
+    snapshot: { total: totalSnapshots }
   }, totalTimeInSecs } = props;
 
   const initialState = {
@@ -33,17 +35,17 @@ const App = (props) => {
       numPendingTests,
       numTotalTestSuites,
       numTotalTests,
-      totalTimeInSecs
+      totalTimeInSecs,
+      totalSnapshots 
     },
     suites: testResults
   };
 
   return (
     <StateProvider initialState={initialState} reducer={reducer}>
-      <nav></nav> {/* navigation: Project Name + Side Menu Hamburger */}
-      <Header /> {/* header showing summary */}
+      <Nav /> {/* navigation: Project Name + Side Menu Hamburger */}
+      {/* <Header /> header showing summary */}
       <TestResult/> {/* main */}
-      <div id='sideNavMenu'></div> {/* Side Menu */}
       <Footer /> {/* footer */}
     </StateProvider>
   )
