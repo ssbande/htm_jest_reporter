@@ -1,7 +1,10 @@
 import React, { useRef, useState, useEffect, Fragment } from 'react';
 import { useStateValue } from '../context/state';
 import { FaChessKnight, FaCopy, FaSuitcase } from 'react-icons/fa';
-import { MdDoneAll, MdClear, MdRedo, MdCamera, MdAlarmOn, MdTouchApp } from "react-icons/md";
+import { MdTune } from 'react-icons/md';
+import Settings from './settings';
+
+import { MdDoneAll, MdClear, MdRedo, MdCamera, MdAlarmOn, MdTouchApp } from 'react-icons/md';
 import CountUp from 'react-countup';
 
 const Footer = () => {
@@ -45,17 +48,20 @@ const Footer = () => {
         <FaChessKnight size='45px' color='white' />
         {config.title}
       </div>
-      <div onClick={toggleMenu}
+      {/* <div onClick={toggleMenu}
         className={`hamburger hamburger--spin ${showSettings ? 'is-active' : ''}`}>
-        <div className="hamburger-box">
-          <div className="hamburger-inner"></div>
+        <div className='hamburger-box'>
+          <div className='hamburger-inner'></div>
         </div>
+      </div> */}
+      <div onClick={toggleMenu} className={`settingsOption ${showSettings ? 'settingsactive' : ''}`}>
+        <MdTune size={20} style={{ transform: 'rotate(270deg)' }} /> Settings
       </div>
     </nav>
     <header>
-      <div ref={headlineRef} className="headline" style={{ opacity: `${1 - scrollTop / headlineHeight}` }}>
-        <div className="inner" >
-          <div style={{ transform: "translateY(" + scrollTop * 0.4 + "px)", width: '75vw' }}>
+      <div ref={headlineRef} className='headline' style={{ opacity: `${1 - scrollTop / headlineHeight}` }}>
+        <div className='inner' >
+          <div style={{ transform: 'translateY(' + scrollTop * 0.4 + 'px)', width: '75vw' }}>
             <div className='summaryContainer'>
               <div>
                 <FaSuitcase size='60px' color='black' style={{ filter: 'drop-shadow(1px 2px 3px rgba(0,0,0,0.5))' }} />
@@ -96,17 +102,18 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      {showScrollTopButton && <button onClick={scrollToTop} className='toTopButton' id="myBtn" title="Go to top">
-        Top <MdTouchApp size={20} />
-      </button>}
-      <div id="mySidenav" className="sidenav" style={{ width: `${showSettings ? '100vw' : 0}` }}>
-        {/* <div className='sideMenuHeading'>Settings</div> */}
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Clients</a>
-        <a href="#">Contact</a>
-      </div>
     </header>
+    {showScrollTopButton && <button onClick={scrollToTop} className='toTopButton' id='myBtn' title='Go to top'>
+      Top <MdTouchApp size={20} />
+    </button>}
+    {/* <div id='mySidenav' className='sidenav' style={{ width: `${showSettings ? '100vw' : 0}` }}>
+        <div className='sideMenuHeading'>Settings</div> 
+        <a href='#'>About</a>
+        <a href='#'>Services</a>
+        <a href='#'>Clients</a>
+        <a href='#'>Contact</a>
+      </div> */}
+    <Settings showSettings={showSettings} />
   </Fragment>
 }
 

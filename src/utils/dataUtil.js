@@ -14,6 +14,8 @@ const getIndicativeIcon = {
   'pending': <IoMdRadioButtonOn size={24} color='#ffce42'/>
 }
 
+export const graphColors = Object.values(getTestBorderColor);
+
 export const formatTestSuite = (testSuite, index) => {
   console.log('testSuite: ', testSuite);
   return {

@@ -3,7 +3,6 @@ import { StateProvider } from '../context/state';
 import { reducer } from '../context/reducer';
 
 import TestResult from './testResult';
-import Header from '../components/header';
 import Footer from '../components/footer';
 import Nav from '../components/nav';
 

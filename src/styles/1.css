@@ -79,6 +79,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 0px 10px 0px;
 }
 
 nav.scrolled {
@@ -145,8 +146,8 @@ main {
   z-index: 11;
   top: 0;
   right: 0;
-  background-color: rgba(0, 0, 0, 0.8);
-  /* background-image: linear-gradient(to bottom, #50c6d8 20%, #202020); */
+  /* background-color: rgba(0, 0, 0, 0.8); */
+  background-image: linear-gradient(to bottom, #50c6d8 20%, #202020);
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 95px;
@@ -164,4 +165,131 @@ main {
   padding-left: 10px;
   color: white;
   font-size: 1.4rem;
+}
+
+.settingsOption {
+  margin-right: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 95px;
+  cursor: pointer;
+  font-family: 'Ubuntu';
+  transition: all .2s ease-in-out;
+  outline: none;
+}
+
+.settingsactive {
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.settingsOption:hover {
+  text-shadow: 2px 2px 2px rgba(0,0,0,.9);
+  /* transform: scale(1.2); */
+}
+
+.settingsContainer {
+  position: fixed;
+  top: 50px;
+  right: 30px;
+  width: 250px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px 0 8px 8px;
+  border: 1px solid #50c6d8;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+  z-index: 999;
+}
+
+.settingsContainerActive {
+  opacity: 1;
+  box-shadow: 2px 4px 4px rgba(0,0,0,.4)
+}
+
+.setting {
+  color: #555;
+  font-size: 0.8rem;
+  padding: 10px 0 15px 0;
+  font-weight: bold;
+  border-bottom: 1px solid whitesmoke;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.setting:last-child {
+  border-bottom: none;
+}
+
+
+.cbx {
+  position: absolute;
+  margin: -12px -20px;
+  border: 2px solid #e8e8eb;
+  background: #e8e8eb;
+  border-radius: 4px;
+  transform: translate3d(0, 0, 0);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.cbx:hover {
+  border-color: #50c6d8;
+}
+.flip {
+  display: block;
+  transition: all 0.4s ease;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+#cbxGraphs,
+#cbxFailingOnly,
+#cbxSuiteLocation {
+  display: none;
+}
+#cbxGraphs:checked + .cbx,
+#cbxFailingOnly:checked + .cbx, 
+#cbxSuiteLocation:checked + .cbx {
+  border-color: #50c6d8;
+}
+#cbxGraphs:checked + .cbx .flip,
+#cbxFailingOnly:checked + .cbx .flip,
+#cbxSuiteLocation:checked + .cbx .flip {
+  transform: rotateY(180deg);
+}
+.front,
+.back {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}
+.front {
+  background: #fff;
+  z-index: 1;
+}
+.back {
+  transform: rotateY(180deg);
+  background: #50c6d8;
+  text-align: center;
+  color: #fff;
+  line-height: 20px;
+  box-shadow: 0 0 0 1px #50c6d8;
+}
+.back svg {
+  margin-top: 3px;
+  fill: none;
+}
+.back svg path {
+  stroke: #fff;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
